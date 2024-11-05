@@ -35,6 +35,8 @@ secs_to_human() {
 }
 
 # install requirements
+echo -e "[ ${BGreen}INFO${NC} ] Updating repository"
+apt update >/dev/null 2>&1
 echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
 apt install wget curl unzip -y >/dev/null 2>&1
 
