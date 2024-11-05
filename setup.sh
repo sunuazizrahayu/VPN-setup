@@ -40,6 +40,14 @@ print_success() {
   echo -e "[ ${GREEN}SUCCESS${NC} ] $message"
 }
 
+# Get Script Version
+serverV=$( curl -sS "${CDN}VERSION"  )
+echo $serverV > /opt/.ver
+
+
+echo -e "$BYellow-----------------------------------"
+echo -e "$BBlue VPN Setup Auto Installer $serverV   "
+echo -e "$BYellow----------------------------------- $NC"
 
 # Install
 echo -e "[ ${BGreen}INFO${NC} ] Updating repository"
@@ -146,8 +154,8 @@ read -rp "Pilih domain yang akan kamu pakai : " dns
 if test $dns -eq 1; then
   clear
   echo -e "$BYellow-----------------------------------"
-  echo -e "$BBlue SETUP RANDOM DOMAIN                 $NC"
-  echo -e "$BYellow-----------------------------------"
+  echo -e "$BBlue SETUP RANDOM DOMAIN                 "
+  echo -e "$BYellow----------------------------------- $NC"
   wget -q -O cf.sh "${CDN}domain/cf.sh" >/dev/null 2>&1
   chmod +x cf.sh && ./cf.sh | tee /root/log-setup-domain.log
   print_success "Domain Random Done"
@@ -225,9 +233,6 @@ fi
 # clean history
 history -c
 
-# Get Script Version
-serverV=$( curl -sS "${CDN}VERSION"  )
-echo $serverV > /opt/.ver
 
 # Get Time
 aureb=$(cat /home/re_otm)
