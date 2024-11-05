@@ -211,7 +211,7 @@ fi
 history -c
 
 # Get Script Version
-serverV=$( curl -sS "${CDN}menu/versi"  )
+serverV=$( curl -sS "${CDN}VERSION"  )
 echo $serverV > /opt/.ver
 
 # Get Time
