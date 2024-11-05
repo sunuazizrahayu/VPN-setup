@@ -85,7 +85,7 @@ if [ "" = "$PKG_OK" ]; then
     echo -e "[ ${BBlue}NOTES${NC} ] Press any key to exit."
     read -n 1 -s  # Menunggu pengguna menekan tombol apa saja
     clear
-    exit 1
+    exit 0
   fi
 else
   echo -e "[ ${BGreen}INFO${NC} ] $REQUIRED_PKG is already installed."
