@@ -1,7 +1,7 @@
 #!/bin/bash
 # cari apa
 clear
-apt install jq curl -y
+apt install wget curl jq -y
 DOMAIN=givpn.my.id
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 SUB_DOMAIN=xray-${sub}.givpn.my.id

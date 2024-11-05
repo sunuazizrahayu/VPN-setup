@@ -144,7 +144,6 @@ echo -e "$BYellow----------------------------------------------------------$NC"
 read -rp "Pilih domain yang akan kamu pakai : " dns
 if test $dns -eq 1; then
   clear
-  apt install jq curl -y
   wget -q -O /root/cf.sh "${CDN}domain/cf.sh" >/dev/null 2>&1
   chmod +x /root/cf.sh
   bash /root/cf.sh | tee /root/install.log
@@ -257,6 +256,7 @@ secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 
 # remove old installer script
 rm /root/setup.sh >/dev/null 2>&1
+rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 
