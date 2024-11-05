@@ -35,7 +35,8 @@ secs_to_human() {
 }
 
 # install requirements
-apt install -y wget curl unzip
+echo -e "[ ${BGreen}INFO${NC} ] Install required package"
+apt install wget curl unzip -y >/dev/null 2>&1
 
 
 # remove old config
@@ -99,7 +100,7 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 
 echo -e "[ ${BGreen}INFO${NC} ] Preparing the install file"
-apt install git curl -y >/dev/null 2>&1
+#apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 echo -e "[ ${BGreen}INFO${NC} ] Aight good ... installation file is ready"
 sleep 0.5
@@ -120,7 +121,7 @@ echo -e "$BYellow----------------------------------------------------------$NC"
 echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
 echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
 echo -e "$BYellow----------------------------------------------------------$NC"
-read -rp " Pilih domain yang akan kamu pakai : " dns
+read -rp "Pilih domain yang akan kamu pakai : " dns
 if test $dns -eq 1; then
   clear
   apt install jq curl -y
