@@ -35,4 +35,7 @@ echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
 apt install wget curl screen -y >/dev/null 2>&1
 
 # get script
-wget https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/setup.sh -O setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+wget https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/setup.sh -O setup.sh
+chmod +x setup.sh
+sed -i -e 's/\r$//' setup.sh
+script -c "screen -S setup ./setup.sh"
