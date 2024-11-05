@@ -12,7 +12,7 @@ clear
 cd
 
 # domain random (trailing slash)
-CDN="https://raw.githubusercontent.com/givpn/AutoScriptXray/master/"
+CDN="https://raw.githubusercontent.com/sunuazizrahayu/Xray/master/"
 
 # init coloring
 red='\e[1;31m'
