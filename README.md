@@ -1,5 +1,4 @@
-# Langsung install Sayangku tanpa perlu daftar IP VPS
-# Pesan dariku baca terlebih dahulu sebelum memakai....!!!
+# XRAY Auto Installer
 
 </p> 
 <h2 align="center"> Supported Linux Distribution</h2>
@@ -62,7 +61,6 @@
 - BBRPLUS version 1.4.0 by [Chikage0o0](https://github.com/Chikage0o0/Linux-NetSpeed/blob/master/tcp.sh)
 - DNS CHANGER
 - DLL
-- auto backup tidak ada ? ya... dihilangkan permanent
   
 # Menu
 ![Service Status](https://raw.githubusercontent.com/givpn/AutoScriptXray/master/image/menu.png)
@@ -75,13 +73,9 @@
 ```
 sudo su
 ```
-- Step 2
+- Step 2 INSTALL, NOTE jika sudah root langsung COPAS link dibawah ini saja ya
 ```
-cd
-```
-- Step 3 INSTALL, NOTE jika sudah root langsung COPAS link dibawah ini saja ya
-```
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/givpn/AutoScriptXray/master/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+wget https://raw.githubusercontent.com/sunuazizrahayu/Xray/master/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
 ```
 
 # Buat root di VPS bagi kamu yang login ke server masih menggunakan username yang bukan root
@@ -90,10 +84,6 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.di
 sudo su
 ```
 - Step 2
-```
-cd
-```
-- Step 3
 ```
 apt update && apt install wget -y && wget -qO- -O rootvps.sh https://raw.githubusercontent.com/givpn/rootvps/master/rootvps.sh && bash rootvps.sh
   
