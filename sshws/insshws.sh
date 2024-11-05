@@ -13,7 +13,8 @@ chmod +x /usr/local/bin/ws-dropbear
 chmod +x /usr/local/bin/ws-stunnel
 
 #System Dropbear Websocket-SSH Python
-wget -O /etc/systemd/system/ws-dropbear.service "${CDN}sshws/service-wsdropbear" && chmod +x /etc/systemd/system/ws-dropbear.service
+#wget -O /etc/systemd/system/ws-dropbear.service "${CDN}sshws/service-wsdropbear" && chmod +x /etc/systemd/system/ws-dropbear.service
+wget -O /etc/systemd/system/ws-dropbear.service "${CDN}sshws/ws-dropbear.service" && chmod +x /etc/systemd/system/ws-dropbear.service
 
 #System SSL/TLS Websocket-SSH Python
 wget -O /etc/systemd/system/ws-stunnel.service "${CDN}sshws/ws-stunnel.service" && chmod +x /etc/systemd/system/ws-stunnel.service
