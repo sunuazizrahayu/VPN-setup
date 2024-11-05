@@ -1,4 +1,6 @@
 #!/bin/bash
+CDN="https://raw.githubusercontent.com/sunuazizrahayu/Xray/master/"
+# ==================================================
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 echo "Checking VPS"
 clear
@@ -494,31 +496,31 @@ systemctl restart runn
 
 cd /usr/bin/
 # vmess
-wget -O add-ws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/add-ws.sh" && chmod +x add-ws
-wget -O trialvmess "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/trialvmess.sh" && chmod +x trialvmess
-wget -O renew-ws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/renew-ws.sh" && chmod +x renew-ws
-wget -O del-ws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/del-ws.sh" && chmod +x del-ws
-wget -O cek-ws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/cek-ws.sh" && chmod +x cek-ws
+wget -O add-ws "${CDN}xray/add-ws.sh" && chmod +x add-ws
+wget -O trialvmess "${CDN}xray/trialvmess.sh" && chmod +x trialvmess
+wget -O renew-ws "${CDN}xray/renew-ws.sh" && chmod +x renew-ws
+wget -O del-ws "${CDN}xray/del-ws.sh" && chmod +x del-ws
+wget -O cek-ws "${CDN}xray/cek-ws.sh" && chmod +x cek-ws
 
 # vless
-wget -O add-vless "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/add-vless.sh" && chmod +x add-vless
-wget -O trialvless "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/trialvless.sh" && chmod +x trialvless
-wget -O renew-vless "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/renew-vless.sh" && chmod +x renew-vless
-wget -O del-vless "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/del-vless.sh" && chmod +x del-vless
-wget -O cek-vless "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/cek-vless.sh" && chmod +x cek-vless
+wget -O add-vless "${CDN}xray/add-vless.sh" && chmod +x add-vless
+wget -O trialvless "${CDN}xray/trialvless.sh" && chmod +x trialvless
+wget -O renew-vless "${CDN}xray/renew-vless.sh" && chmod +x renew-vless
+wget -O del-vless "${CDN}xray/del-vless.sh" && chmod +x del-vless
+wget -O cek-vless "${CDN}xray/cek-vless.sh" && chmod +x cek-vless
 
 # trojan
-wget -O add-tr "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/add-tr.sh" && chmod +x add-tr
-wget -O trialtrojan "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/trialtrojan.sh" && chmod +x trialtrojan
-wget -O del-tr "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/del-tr.sh" && chmod +x del-tr
-wget -O renew-tr "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/renew-tr.sh" && chmod +x renew-tr
-wget -O cek-tr "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/cek-tr.sh" && chmod +x cek-tr
+wget -O add-tr "${CDN}xray/add-tr.sh" && chmod +x add-tr
+wget -O trialtrojan "${CDN}xray/trialtrojan.sh" && chmod +x trialtrojan
+wget -O del-tr "${CDN}xray/del-tr.sh" && chmod +x del-tr
+wget -O renew-tr "${CDN}xray/renew-tr.sh" && chmod +x renew-tr
+wget -O cek-tr "${CDN}xray/cek-tr.sh" && chmod +x cek-tr
 
 # shadowsocks
-wget -O add-ssws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/add-ssws.sh" && chmod +x add-ssws
-wget -O trialssws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/trialssws.sh" && chmod +x trialssws
-wget -O del-ssws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/del-ssws.sh" && chmod +x del-ssws
-wget -O renew-ssws "https://raw.githubusercontent.com/givpn/AutoScriptXray/master/xray/renew-ssws.sh" && chmod +x renew-ssws
+wget -O add-ssws "${CDN}xray/add-ssws.sh" && chmod +x add-ssws
+wget -O trialssws "${CDN}xray/trialssws.sh" && chmod +x trialssws
+wget -O del-ssws "${CDN}xray/del-ssws.sh" && chmod +x del-ssws
+wget -O renew-ssws "${CDN}xray/renew-ssws.sh" && chmod +x renew-ssws
 
 
 sleep 0.5
@@ -527,8 +529,8 @@ yellow "xray/Vmess"
 yellow "xray/Vless"
 
 mv /root/domain /etc/xray/ 
-if [ -f /root/scdomain ];then
-rm /root/scdomain > /dev/null 2>&1
+if [ -f /root/scdomain ]; then
+  rm /root/scdomain > /dev/null 2>&1
 fi
 clear
 rm -f ins-xray.sh  
