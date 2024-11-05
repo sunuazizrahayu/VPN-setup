@@ -33,6 +33,12 @@ red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
 }
+print_success() {
+  local message="$1"
+  GREEN='\033[0;32m'
+  NC='\033[0m' # No Color
+  echo -e "[ ${GREEN}SUCCESS${NC} ] $message"
+}
 
 
 # Install
@@ -89,6 +95,7 @@ if [ "" = "$PKG_OK" ]; then
   fi
 else
   echo -e "[ ${BGreen}INFO${NC} ] $REQUIRED_PKG is already installed."
+  sleep 0.5
 fi
 
 ReqPKG="linux-headers-$(uname -r)"
