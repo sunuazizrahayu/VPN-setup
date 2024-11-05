@@ -186,6 +186,14 @@ echo -e "\e[33m-----------------------------------\033[0m"
 wget "${CDN}xray/ins-xray.sh" && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 
+# Install VPN menu
+echo -e "\e[33m-----------------------------------\033[0m"
+echo -e "$BGreen         Setup VPN Menu             $NC"
+echo -e "\e[33m-----------------------------------\033[0m"
+wget -q "${CDN}menu/install.sh" && chmod +x install.sh && ./install.sh
+rm install.sh
+clear
+
 
 # Check some files & directory
 if [ -f "/root/log-install.txt" ]; then
@@ -232,7 +240,7 @@ echo "   XRAY VPN Installer $serverV                                    "  | tee
 echo "=================================================================="  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                  : 22"  | tee -a log-install.txt
-echo "   - SSH Websocket            : 80 [OFF]" | tee -a log-install.txt
+echo "   - SSH Websocket            : 80" | tee -a log-install.txt
 echo "   - SSH SSL Websocket        : 443" | tee -a log-install.txt
 echo "   - Stunnel4                 : 222, 777" | tee -a log-install.txt
 echo "   - Dropbear                 : 109, 143" | tee -a log-install.txt
