@@ -74,7 +74,7 @@ sudo su
 ```
 - Step 2 INSTALL, NOTE jika sudah root langsung COPAS link dibawah ini saja ya
 ```
-wget https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+wget -qO- https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/install.sh | bash
 ```
 
 # Buat root di VPS bagi kamu yang login ke server masih menggunakan username yang bukan root

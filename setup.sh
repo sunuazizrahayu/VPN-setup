@@ -34,12 +34,6 @@ secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
 }
 
-# install requirements
-echo -e "[ ${BGreen}INFO${NC} ] Updating repository"
-apt update >/dev/null 2>&1
-echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
-apt install wget curl unzip -y >/dev/null 2>&1
-
 
 # remove old config
 rm -rf setup.sh
