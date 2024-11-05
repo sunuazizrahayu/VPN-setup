@@ -167,22 +167,6 @@ echo -e "\e[33m-----------------------------------\033[0m"
 wget "${CDN}xray/ins-xray.sh" && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 
-# set Profile
-cat> /root/.profile << END
-# ~/.profile: executed by Bourne-compatible login shells.
-
-if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
-fi
-
-mesg n || true
-clear
-menu
-END
-chmod 644 /root/.profile
-
 
 # Check some files & directory
 if [ -f "/root/log-install.txt" ]; then
