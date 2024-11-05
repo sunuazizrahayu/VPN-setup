@@ -35,6 +35,13 @@ secs_to_human() {
 }
 
 
+# Install
+echo -e "[ ${BGreen}INFO${NC} ] Updating repository"
+apt update >/dev/null 2>&1
+echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
+apt install wget curl screen -y >/dev/null 2>&1
+
+
 # remove old config
 rm -rf setup.sh
 rm -rf /etc/xray/domain
