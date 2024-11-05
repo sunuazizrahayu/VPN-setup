@@ -1,5 +1,5 @@
 #!/bin/bash
-CDN="https://raw.githubusercontent.com/sunuazizrahayu/Xray/master/"
+CDN="https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/"
 # ==================================================
 
 # etc

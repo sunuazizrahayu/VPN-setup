@@ -1,4 +1,6 @@
 #!/bin/bash
+CDN="https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/"
+# ==================================================
 # System version number
 if [ "${EUID}" -ne 0 ]; then
   echo "You need to run this script as root"
@@ -11,8 +13,6 @@ fi
 clear
 cd
 
-# domain random (trailing slash)
-CDN="https://raw.githubusercontent.com/sunuazizrahayu/Xray/master/"
 
 # init coloring
 red='\e[1;31m'

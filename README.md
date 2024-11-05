@@ -1,4 +1,5 @@
-# XRAY Auto Installer
+# VPN Setup
+VPN Setup is auto installer to install any VPN service
 
 </p> 
 <h2 align="center"> Supported Linux Distribution</h2>
