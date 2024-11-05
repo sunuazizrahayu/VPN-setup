@@ -10,8 +10,8 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
   echo "OpenVZ is not supported"
   exit 1
 fi
-clear
 cd
+clear
 
 
 # init coloring
@@ -35,7 +35,7 @@ secs_to_human() {
 }
 
 # install requirements
-echo -e "[ ${BGreen}INFO${NC} ] Install required package"
+echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
 apt install wget curl unzip -y >/dev/null 2>&1
 
 
@@ -125,7 +125,7 @@ read -rp "Pilih domain yang akan kamu pakai : " dns
 if test $dns -eq 1; then
   clear
   apt install jq curl -y
-  wget -q -O /root/cf "${CDN}ssh/cf" >/dev/null 2>&1
+  wget -q -O /root/cf "${CDN}domain/cf" >/dev/null 2>&1
   chmod +x /root/cf
   bash /root/cf | tee /root/install.log
   print_success "Domain Random Done"
