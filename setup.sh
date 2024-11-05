@@ -136,18 +136,22 @@ echo ""
 # Setup VPS Domain
 ##################################################
 clear
-echo -e "$BBlue                     SETUP DOMAIN VPS     $NC"
-echo -e "$BYellow----------------------------------------------------------$NC"
+echo -e "$BYellow-----------------------------------"
+echo -e "$BBlue SETUP DOMAIN VPS                 $NC"
+echo -e "$BYellow-----------------------------------"
 echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
 echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
-echo -e "$BYellow----------------------------------------------------------$NC"
+echo -e "$BYellow-----------------------------------"
 read -rp "Pilih domain yang akan kamu pakai : " dns
 if test $dns -eq 1; then
   clear
-  wget -q -O /root/cf.sh "${CDN}domain/cf.sh" >/dev/null 2>&1
-  chmod +x /root/cf.sh
-  bash /root/cf.sh | tee /root/install.log
+  echo -e "$BYellow-----------------------------------"
+  echo -e "$BBlue SETUP RANDOM DOMAIN                 $NC"
+  echo -e "$BYellow-----------------------------------"
+  wget -q -O cf.sh "${CDN}domain/cf.sh" >/dev/null 2>&1
+  chmod +x cf.sh && ./cf.sh | tee /root/log-setup-domain.log
   print_success "Domain Random Done"
+  rm -f cf.sh
 elif test $dns -eq 2; then
   read -rp "Enter Your Domain : " dom
   echo "$dom" > /root/scdomain
@@ -164,7 +168,7 @@ echo -e "${BGreen}Setup domain done!${NC}"
 sleep 2
 clear
 
-    
+
 # Install SSH OVPN
 echo -e "\e[33m-----------------------------------\033[0m"
 echo -e "$BGreen      Install SSH VPN                 $NC"

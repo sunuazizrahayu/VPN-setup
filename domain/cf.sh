@@ -1,6 +1,6 @@
 #!/bin/bash
 # cari apa
-clear
+
 apt install wget curl jq -y
 DOMAIN=givpn.my.id
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
@@ -42,4 +42,3 @@ echo "$SUB_DOMAIN" > /etc/xray/domain
 echo "$SUB_DOMAIN" > /etc/v2ray/domain
 echo -e "Done Record Domain= ${SUB_DOMAIN} For VPS"
 sleep 2
-rm -f /root/cf.sh
