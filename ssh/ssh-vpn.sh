@@ -3,7 +3,7 @@
 # ==================================================
 
 # etc
-apt dist-upgrade -y
+#apt dist-upgrade -y
 apt install netfilter-persistent -y
 apt-get remove --purge ufw firewalld -y
 apt install -y screen curl jq bzip2 gzip vnstat coreutils rsyslog iftop zip unzip git apt-transport-https build-essential -y
@@ -16,7 +16,7 @@ NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 source /etc/os-release
 ver=$VERSION_ID
 
-#detail nama perusahaan
+# Certbot SSL forms: detail nama perusahaan
 country=ID
 state=Indonesia
 locality=Jakarta
@@ -69,19 +69,19 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
 #update
 apt update -y
-apt upgrade -y
-apt dist-upgrade -y
+#apt upgrade -y
+#apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
 
 #install jq
-apt -y install jq
+#apt -y install jq
 
 #install shc
 apt -y install shc
 
 # install wget and curl
-apt -y install wget curl
+#apt -y install wget curl
 
 #figlet
 apt-get install figlet -y
