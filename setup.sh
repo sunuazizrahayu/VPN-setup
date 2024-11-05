@@ -66,26 +66,29 @@ touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 
-#  check linux headers
+# Check & Install linux headers
 echo -e "[ ${BGreen}INFO${NC} ] Checking headers..."
 REQUIRED_PKG="linux-headers-$(uname -r)"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG | grep "install ok installed")
 echo Checking for $REQUIRED_PKG: $PKG_OK
 if [ "" = "$PKG_OK" ]; then
   sleep 0.5
-  echo -e "[ ${BRed}WARNING${NC} ] Try to install ...."
+  echo -e "[ ${BRed}WARNING${NC} ] $REQUIRED_PKG not installed. Trying to install..."
   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  apt-get --yes install $REQUIRED_PKG
-  sleep 0.5
-  echo ""
-  echo -e "[ ${BBlue}NOTES${NC} ] If error you need.. to do this"
-  echo -e "[ ${BBlue}NOTES${NC} ] apt update && upgrade"
-  echo -e "[ ${BBlue}NOTES${NC} ] After this"
-  echo -e "[ ${BBlue}NOTES${NC} ] Then run this script again"
-  echo -e "[ ${BBlue}NOTES${NC} ] enter now"
-  read
+  apt update && apt install "$REQUIRED_PKG" -y
+  if [ $? -eq 0 ]; then
+    echo -e "[ ${BGreen}INFO${NC} ] $REQUIRED_PKG installed successfully."
+  else
+    echo -e "[ ${BBlue}NOTES${NC} ] Installation failed. Please do the following:"
+    echo -e "[ ${BBlue}NOTES${NC} ] Run: apt update && apt upgrade"
+    echo -e "[ ${BBlue}NOTES${NC} ] After upgrading, re-run this script."
+    echo -e "[ ${BBlue}NOTES${NC} ] Press any key to exit."
+    read -n 1 -s  # Menunggu pengguna menekan tombol apa saja
+    clear
+    exit 1
+  fi
 else
-  echo -e "[ ${BGreen}INFO${NC} ] Oke installed"
+  echo -e "[ ${BGreen}INFO${NC} ] $REQUIRED_PKG is already installed."
 fi
 
 ReqPKG="linux-headers-$(uname -r)"
