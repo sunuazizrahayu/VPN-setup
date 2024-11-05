@@ -38,4 +38,4 @@ apt install wget curl screen -y >/dev/null 2>&1
 wget https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/setup.sh -O setup.sh
 chmod +x setup.sh
 sed -i -e 's/\r$//' setup.sh
-script -c "screen -S setup ./setup.sh"
+screen -dmS setup ./setup.sh
