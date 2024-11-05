@@ -245,7 +245,7 @@ fi
 curl -sS ipv4.icanhazip.com > /etc/myipvps
 echo ""
 echo "=================================================================="  | tee -a log-install.txt
-echo "   XRAY VPN Installer $serverV                                    "  | tee -a log-install.txt
+echo "   VPN Setup Auto Installer $serverV by Kang Sunu                 "  | tee -a log-install.txt
 echo "=================================================================="  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                  : 22"  | tee -a log-install.txt
