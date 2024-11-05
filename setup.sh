@@ -108,23 +108,30 @@ fi
 
 
 start=$(date +%s)
+# set localtime
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
+# disable ipv6
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
+
+
 
 echo -e "[ ${BGreen}INFO${NC} ] Preparing the install file"
 #apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 echo -e "[ ${BGreen}INFO${NC} ] Aight good ... installation file is ready"
 sleep 0.5
-echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
 
+
+echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
 echo -e "$BGreen Permission Accepted!$NC"
 sleep 2
 
 mkdir -p /var/lib/ >/dev/null 2>&1
 echo "IP=" >> /var/lib/ipvps.conf
 echo ""
+
 
 # Setup VPS Domain
 ##################################################
