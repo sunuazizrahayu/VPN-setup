@@ -1,19 +1,6 @@
 #!/bin/bash
 CDN="https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/"
 # ==================================================
-# System version number
-if [ "${EUID}" -ne 0 ]; then
-  echo "You need to run this script as root"
-  exit 1
-fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-  echo "OpenVZ is not supported"
-  exit 1
-fi
-cd
-clear
-
-
 # init coloring
 red='\e[1;31m'
 green='\e[0;32m'
@@ -40,6 +27,27 @@ print_success() {
   echo -e "[ ${GREEN}SUCCESS${NC} ] $message"
 }
 
+
+# Check permission
+##################################################
+echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
+# check root access
+if [ "${EUID}" -ne 0 ]; then
+  echo "You need to run this script as root"
+  exit 1
+fi
+# check vps virtualization
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+  echo "OpenVZ is not supported"
+  exit 1
+fi
+echo -e "$BGreen Permission Accepted!$NC"
+sleep 1
+cd
+clear
+
+
+
 # Get Script Version
 serverV=$( curl -sS "${CDN}VERSION"  )
 echo $serverV > /opt/.ver
@@ -56,6 +64,7 @@ echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
 apt install wget curl screen -y >/dev/null 2>&1
 
 
+# get local ip
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
@@ -106,17 +115,6 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 
 
-
-echo -e "[ ${BGreen}INFO${NC} ] Preparing the install file"
-#apt install git curl -y >/dev/null 2>&1
-apt install python -y >/dev/null 2>&1
-echo -e "[ ${BGreen}INFO${NC} ] Aight good ... installation file is ready"
-sleep 0.5
-
-
-echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
-echo -e "$BGreen Permission Accepted!$NC"
-sleep 2
 
 mkdir -p /var/lib/ >/dev/null 2>&1
 echo "IP=" >> /var/lib/ipvps.conf
@@ -205,6 +203,7 @@ clear
 echo -e "\e[33m-----------------------------------\033[0m"
 echo -e "$BGreen         Setup VPN Menu             $NC"
 echo -e "\e[33m-----------------------------------\033[0m"
+echo -e "[ ${BGreen}INFO${NC} ] Configuring VPN Menu"
 wget -q "${CDN}menu/install.sh" && chmod +x install.sh && ./install.sh
 rm install.sh
 clear

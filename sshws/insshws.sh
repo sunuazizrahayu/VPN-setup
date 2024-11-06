@@ -1,8 +1,8 @@
 #!/bin/bash
 CDN="https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/"
 # ==================================================
-clear
-cd
+# Install required package
+apt install python -y
 
 #Install Script Websocket-SSH Python
 wget -O /usr/local/bin/ws-dropbear "${CDN}sshws/ws-dropbear"
