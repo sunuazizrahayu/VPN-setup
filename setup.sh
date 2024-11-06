@@ -96,8 +96,8 @@ if [ "" = "$PKG_OK" ]; then
     exit 0
   fi
 else
-  echo -e "[ ${tyblue}SUCCESS${NC} ] $REQUIRED_PKG is already installed."
-  sleep 0.5
+  echo -e "[ ${BBlue}SUCCESS${NC} ] $REQUIRED_PKG is already installed."
+  sleep 2
 fi
 
 ReqPKG="linux-headers-$(uname -r)"
