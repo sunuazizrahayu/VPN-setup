@@ -2,43 +2,52 @@
 CDN="https://raw.githubusercontent.com/sunuazizrahayu/VPN-setup/master/"
 # ==================================================
 
+download_with_status() {
+  local output_file=$1
+  local url=$2
+
+  # Unduh file dan tangkap respons HTTP
+  HTTP_RESPONSE=$(wget -qO "$output_file" "$url" --server-response 2>&1 | awk '/^  HTTP\// {print $2}' | tail -n1)
+  echo "[ $HTTP_RESPONSE ] $output_file"
+}
+
 cd /usr/bin
 # menu
-wget -qO menu "${CDN}menu/menu.sh"
-wget -qO m-vmess "${CDN}menu/m-vmess.sh"
-wget -qO m-vless "${CDN}menu/m-vless.sh"
-wget -qO running "${CDN}menu/running.sh"
-wget -qO clearcache "${CDN}menu/clearcache.sh"
-wget -qO m-ssws "${CDN}menu/m-ssws.sh"
-wget -qO m-trojan "${CDN}menu/m-trojan.sh"
+download_with_status menu "${CDN}menu/menu.sh"
+download_with_status m-vmess "${CDN}menu/m-vmess.sh"
+download_with_status m-vless "${CDN}menu/m-vless.sh"
+download_with_status running "${CDN}menu/running.sh"
+download_with_status clearcache "${CDN}menu/clearcache.sh"
+download_with_status m-ssws "${CDN}menu/m-ssws.sh"
+download_with_status m-trojan "${CDN}menu/m-trojan.sh"
 
 # menu ssh ovpn
-wget -qO m-sshovpn "${CDN}menu/m-sshovpn.sh"
-wget -qO usernew "${CDN}ssh/usernew.sh"
-wget -qO trial "${CDN}ssh/trial.sh"
-wget -qO renew "${CDN}ssh/renew.sh"
-wget -qO hapus "${CDN}ssh/hapus.sh"
-wget -qO cek "${CDN}ssh/cek.sh"
-wget -qO member "${CDN}ssh/member.sh"
-wget -qO delete "${CDN}ssh/delete.sh"
-wget -qO autokill "${CDN}ssh/autokill.sh"
-wget -qO ceklim "${CDN}ssh/ceklim.sh"
-wget -qO tendang "${CDN}ssh/tendang.sh"
-wget -qO sshws "${CDN}ssh/sshws.sh"
+download_with_status m-sshovpn "${CDN}menu/m-sshovpn.sh"
+download_with_status usernew "${CDN}ssh/usernew.sh"
+download_with_status trial "${CDN}ssh/trial.sh"
+download_with_status renew "${CDN}ssh/renew.sh"
+download_with_status hapus "${CDN}ssh/hapus.sh"
+download_with_status cek "${CDN}ssh/cek.sh"
+download_with_status member "${CDN}ssh/member.sh"
+download_with_status delete "${CDN}ssh/delete.sh"
+download_with_status autokill "${CDN}ssh/autokill.sh"
+download_with_status ceklim "${CDN}ssh/ceklim.sh"
+download_with_status tendang "${CDN}ssh/tendang.sh"
+download_with_status sshws "${CDN}ssh/sshws.sh"
 
 # menu system
-wget -qO m-system "${CDN}menu/m-system.sh"
-wget -qO m-domain "${CDN}menu/m-domain.sh"
-wget -qO add-host "${CDN}ssh/add-host.sh"
-wget -qO certv2ray "${CDN}xray/certv2ray.sh"
-wget -qO speedtest "${CDN}ssh/speedtest_cli.py"
-wget -qO auto-reboot "${CDN}menu/auto-reboot.sh"
-wget -qO restart "${CDN}menu/restart.sh"
-wget -qO bw "${CDN}menu/bw.sh"
-wget -qO m-tcp "${CDN}menu/tcp.sh"
-wget -qO xp "${CDN}ssh/xp.sh"
-wget -qO sshws "${CDN}ssh/sshws.sh"
-wget -qO m-dns "${CDN}menu/m-dns.sh"
+download_with_status m-system "${CDN}menu/m-system.sh"
+download_with_status m-domain "${CDN}menu/m-domain.sh"
+download_with_status add-host "${CDN}ssh/add-host.sh"
+download_with_status certv2ray "${CDN}xray/certv2ray.sh"
+download_with_status speedtest "${CDN}ssh/speedtest_cli.py"
+download_with_status auto-reboot "${CDN}menu/auto-reboot.sh"
+download_with_status restart "${CDN}menu/restart.sh"
+download_with_status bw "${CDN}menu/bw.sh"
+download_with_status m-tcp "${CDN}menu/tcp.sh"
+download_with_status xp "${CDN}ssh/xp.sh"
+download_with_status sshws "${CDN}ssh/sshws.sh"
+download_with_status m-dns "${CDN}menu/m-dns.sh"
 
 chmod +x menu
 chmod +x m-vmess
@@ -73,4 +82,3 @@ chmod +x m-tcp
 chmod +x xp
 chmod +x sshws
 chmod +x m-dns
-cd
