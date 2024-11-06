@@ -147,12 +147,13 @@ touch /etc/v2ray/scdomain
 ##################################################
 clear
 echo -e "$BYellow-----------------------------------"
-echo -e "$BBlue SETUP DOMAIN VPS                 $NC"
+echo -e "$BBlue SETUP DOMAIN VPS                    "
 echo -e "$BYellow-----------------------------------"
-echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
-echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
+echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random"
+echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri"
 echo -e "$BYellow-----------------------------------"
-read -rp "Pilih domain yang akan kamu pakai : $NC" dns
+echo -ne "${BYellow}Pilih domain yang akan kamu pakai : ${NC}"
+read -r dns
 if test $dns -eq 1; then
   clear
   echo -e "$BYellow-----------------------------------"
