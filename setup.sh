@@ -26,26 +26,8 @@ print_success() {
   NC='\033[0m' # No Color
   echo -e "[ ${GREEN}SUCCESS${NC} ] $message"
 }
-
-
-# Check permission
-##################################################
-echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
-# check root access
-if [ "${EUID}" -ne 0 ]; then
-  echo "You need to run this script as root"
-  exit 1
-fi
-# check vps virtualization
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-  echo "OpenVZ is not supported"
-  exit 1
-fi
-echo -e "$BGreen Permission Accepted!$NC"
-sleep 1
 cd
 clear
-
 
 
 # Get Script Version
@@ -57,6 +39,24 @@ echo -e "$BYellow-----------------------------------"
 echo -e "$BBlue VPN Setup Auto Installer $serverV   "
 echo -e "$BYellow----------------------------------- $NC"
 
+# Check Permissions
+##################################################
+echo -ne "[ ${BGreen}INFO${NC} ] Check permission : "
+
+# check root access
+if [ "${EUID}" -ne 0 ]; then
+  echo -ne "[ ${BRed}ERROR${NC} ] You need to run this script as root"
+  exit 1
+fi
+# check vps virtualization
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+  echo -ne "[ ${BRed}ERROR${NC} ] OpenVZ is not supported"
+  exit 1
+fi
+echo -e "$BGreen Permission Accepted!$NC"
+sleep 1
+
+
 # Install
 echo -e "[ ${BGreen}INFO${NC} ] Updating repository"
 apt update >/dev/null 2>&1
@@ -65,6 +65,7 @@ apt install wget curl screen -y >/dev/null 2>&1
 
 
 # get local ip
+echo -e "[ ${BGreen}INFO${NC} ] Get Local IP"
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
@@ -162,7 +163,8 @@ if test $dns -eq 1; then
   print_success "Domain Random Done"
   rm -f cf.sh
 elif test $dns -eq 2; then
-  read -rp "Enter Your Domain : " dom
+  echo -ne "${BYellow}Enter Your Domain : ${NC}"
+  read -r dom
   echo "$dom" > /root/scdomain
 	echo "$dom" > /etc/xray/scdomain
 	echo "$dom" > /etc/xray/domain
