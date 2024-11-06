@@ -184,21 +184,21 @@ clear
 echo -e "\e[33m-----------------------------------\033[0m"
 echo -e "$BGreen      Install SSH VPN                 $NC"
 echo -e "\e[33m-----------------------------------\033[0m"
-wget "${CDN}ssh/ssh-vpn.sh" && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q "${CDN}ssh/ssh-vpn.sh" && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 
 # Install SSH WS
 echo -e "\e[33m-----------------------------------\033[0m"
 echo -e "$BGreen      Install SSH Websocket           $NC"
 echo -e "\e[33m-----------------------------------\033[0m"
-wget "${CDN}sshws/insshws.sh" && chmod +x insshws.sh && ./insshws.sh
+wget -q "${CDN}sshws/insshws.sh" && chmod +x insshws.sh && ./insshws.sh
 clear
 
 # Instal Xray
 echo -e "\e[33m-----------------------------------\033[0m"
 echo -e "$BGreen          Install XRAY              $NC"
 echo -e "\e[33m-----------------------------------\033[0m"
-wget "${CDN}xray/ins-xray.sh" && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q "${CDN}xray/ins-xray.sh" && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 
 # Install VPN menu
