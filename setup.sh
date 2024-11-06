@@ -56,15 +56,6 @@ echo -e "[ ${BGreen}INFO${NC} ] Install setup required package"
 apt install wget curl screen -y >/dev/null 2>&1
 
 
-# remove old config
-rm -rf setup.sh
-rm -rf /etc/xray/domain
-rm -rf /etc/v2ray/domain
-rm -rf /etc/xray/scdomain
-rm -rf /etc/v2ray/scdomain
-rm -rf /var/lib/ipvps.conf
-
-
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
@@ -72,13 +63,6 @@ if [[ "$hst" != "$dart" ]]; then
   echo "$localip $(hostname)" >> /etc/hosts
 fi
 
-# create required directory & files
-mkdir -p /etc/xray
-mkdir -p /etc/v2ray
-touch /etc/xray/domain
-touch /etc/v2ray/domain
-touch /etc/xray/scdomain
-touch /etc/v2ray/scdomain
 
 # Check & Install linux headers
 echo -e "[ ${BGreen}INFO${NC} ] Checking headers..."
@@ -110,8 +94,6 @@ ReqPKG="linux-headers-$(uname -r)"
 if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
   rm /root/setup.sh >/dev/null 2>&1 
   exit
-else
-  clear
 fi
 
 
@@ -141,6 +123,26 @@ echo "IP=" >> /var/lib/ipvps.conf
 echo ""
 
 
+
+# Set required directory
+##################################################
+# remove old config
+rm -rf setup.sh
+rm -rf /etc/xray/domain
+rm -rf /etc/v2ray/domain
+rm -rf /etc/xray/scdomain
+rm -rf /etc/v2ray/scdomain
+rm -rf /var/lib/ipvps.conf
+
+# create required directory & files
+mkdir -p /etc/xray
+mkdir -p /etc/v2ray
+touch /etc/xray/domain
+touch /etc/v2ray/domain
+touch /etc/xray/scdomain
+touch /etc/v2ray/scdomain
+
+
 # Setup VPS Domain
 ##################################################
 clear
@@ -150,7 +152,7 @@ echo -e "$BYellow-----------------------------------"
 echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
 echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
 echo -e "$BYellow-----------------------------------"
-read -rp "Pilih domain yang akan kamu pakai : " dns
+read -rp "Pilih domain yang akan kamu pakai : $NC" dns
 if test $dns -eq 1; then
   clear
   echo -e "$BYellow-----------------------------------"
