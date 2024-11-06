@@ -75,10 +75,10 @@ fi
 
 
 # Check & Install linux headers
-echo -e "[ ${BGreen}INFO${NC} ] Checking headers..."
+echo -e "[ ${BGreen}INFO${NC} ] Get required headers..."
 REQUIRED_PKG="linux-headers-$(uname -r)"
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG | grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
+echo -e "[ ${BGreen}INFO${NC} ] Checking for ${REQUIRED_PKG}: ${PKG_OK}"
 if [ "" = "$PKG_OK" ]; then
   sleep 0.5
   echo -e "[ ${BRed}WARNING${NC} ] $REQUIRED_PKG not installed. Trying to install..."
@@ -96,7 +96,7 @@ if [ "" = "$PKG_OK" ]; then
     exit 0
   fi
 else
-  echo -e "[ ${BGreen}INFO${NC} ] $REQUIRED_PKG is already installed."
+  echo -e "[ ${tyblue}SUCCESS${NC} ] $REQUIRED_PKG is already installed."
   sleep 0.5
 fi
 
