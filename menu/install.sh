@@ -11,6 +11,23 @@ download_with_status() {
   echo "[ $HTTP_RESPONSE ] $output_file"
 }
 
+download_with_status_chmod() {
+  local output_file=$1
+  local url=$2
+
+  # Unduh file dan tangkap respons HTTP
+  HTTP_RESPONSE=$(wget -qO "$output_file" "$url" --server-response 2>&1 | awk '/^  HTTP\// {print $2}' | tail -n1)
+
+  # set chmod
+  # Jika HTTP_RESPONSE adalah 200, maka ubah izin file
+  if [[ "$HTTP_RESPONSE" == "200" ]]; then
+    chmod +x "$output_file"
+    echo "[ $HTTP_RESPONSE ] $output_file - Permission set to executable"
+  else
+    echo "[ $HTTP_RESPONSE ] $output_file - Download failed"
+  fi
+}
+
 cd /usr/bin
 # menu
 download_with_status menu "${CDN}menu/menu.sh"
@@ -82,3 +99,33 @@ chmod +x m-tcp
 chmod +x xp
 chmod +x sshws
 chmod +x m-dns
+
+
+# X-Ray Menu
+###############################
+# vmess
+download_with_status_chmod add-ws "${CDN}xray/add-ws.sh"
+download_with_status_chmod trialvmess "${CDN}xray/trialvmess.sh"
+download_with_status_chmod renew-ws "${CDN}xray/renew-ws.sh"
+download_with_status_chmod del-ws "${CDN}xray/del-ws.sh"
+download_with_status_chmod cek-ws "${CDN}xray/cek-ws.sh"
+
+# vless
+download_with_status_chmod add-vless "${CDN}xray/add-vless.sh"
+download_with_status_chmod trialvless "${CDN}xray/trialvless.sh"
+download_with_status_chmod renew-vless "${CDN}xray/renew-vless.sh"
+download_with_status_chmod del-vless "${CDN}xray/del-vless.sh"
+download_with_status_chmod cek-vless "${CDN}xray/cek-vless.sh"
+
+# trojan
+download_with_status_chmod add-tr "${CDN}xray/add-tr.sh"
+download_with_status_chmod trialtrojan "${CDN}xray/trialtrojan.sh"
+download_with_status_chmod del-tr "${CDN}xray/del-tr.sh"
+download_with_status_chmod renew-tr "${CDN}xray/renew-tr.sh"
+download_with_status_chmod cek-tr "${CDN}xray/cek-tr.sh"
+
+# shadowsocks
+download_with_status_chmod add-ssws "${CDN}xray/add-ssws.sh"
+download_with_status_chmod trialssws "${CDN}xray/trialssws.sh"
+download_with_status_chmod del-ssws "${CDN}xray/del-ssws.sh"
+download_with_status_chmod renew-ssws "${CDN}xray/renew-ssws.sh"
